@@ -24,4 +24,6 @@ return [
     'home' => 'Home',
     'user-crud-app' => 'User CRUD App',
     'logged-in' => 'Jste přihlášení!',
+    'users' => 'Uživatelé',
+    'user-list' => 'Seznam uživatelů',
 ];

@@ -183,4 +183,16 @@ return [
 
         'store' => 'default',
     ],
+
+    /*
+     * List of permissions
+     * Admin has all permissions
+     */
+
+    'list' => [
+        'user.read',
+        'user.write',
+        'user.delete',
+    ],
+
 ];
