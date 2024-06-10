@@ -32,19 +32,30 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request): View
+    public function edit(User $user): View
     {
-        return view('users.edit', [
-            'user' => $request->user,
+        return view('users.form', [
+            'user' => $user
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user): RedirectResponse
     {
-        //
+        if ($request->get('role_admin')) {
+            $user->role = 'admin';
+        } else {
+            $user->role = 'user';
+        }
+
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+
+        $user->update((array)$request);
+
+        return redirect('/users');
     }
 
     /**
@@ -56,6 +67,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect('/users')->with(['message' => 'Uživatel byl úspěšně smazán']);
+        return redirect('/users');
     }
 }

@@ -33,4 +33,7 @@ return [
     'delete-your-account' => 'Smazat účet',
     'reset-password' => 'Nastvit heslo',
     'email-reset-password-link' => 'Poslat odkaz pro nastavení nového hesla',
+    'edit' => 'Úprava údajů uživatele',
+    'saved' => 'Uloženo',
+    'role-admin' => 'Uživatel je admin',
 ];
