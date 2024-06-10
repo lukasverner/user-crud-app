@@ -26,4 +26,11 @@ return [
     'logged-in' => 'Jste přihlášení!',
     'users' => 'Uživatelé',
     'user-list' => 'Seznam uživatelů',
+    'resend' => 'Znovu poslat ověřovací email',
+    'search' => 'Hledat',
+    'clear' => 'Vyčistit filtr',
+    'cancel' => 'Zrušit',
+    'delete-your-account' => 'Smazat účet',
+    'reset-password' => 'Nastvit heslo',
+    'email-reset-password-link' => 'Poslat odkaz pro nastavení nového hesla',
 ];

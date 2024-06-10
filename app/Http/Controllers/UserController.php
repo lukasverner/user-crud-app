@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,16 +17,22 @@ class UserController extends Controller
      */
     public function index(Request $request): View
     {
-        $users = User::all();
-        return view('users.list', [
-            'users' => $users
-        ]);
+        $query = User::query();
+
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->input('name') . '%');
+        }
+
+        $users = $query->get();
+
+        return view('users.list', compact('users'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(Request $request): View
     {
         return view('users.edit', [
             'user' => $request->user,
@@ -43,8 +50,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect('/users')->with(['message' => 'Uživatel byl úspěšně smazán']);
     }
 }
